@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crop Yield Prediction</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h2 class="mt-5">Crop Yield Prediction</h2>
+        <form action="/predict" method="post">
+            <div class="form-group">
+                <label for="rain_fall">Rain Fall (mm)</label>
+                <input type="number" step="any" class="form-control" id="rain_fall" name="rain_fall" required>
+            </div>
+            <div class="form-group">
+                <label for="fertilizer">Fertilizer</label>
+                <input type="number" step="any" class="form-control" id="fertilizer" name="fertilizer" required>
+            </div>
+            <div class="form-group">
+                <label for="temperature">Temperature</label>
+                <input type="number" step="any" class="form-control" id="temperature" name="temperature" required>
+            </div>
+            <div class="form-group">
+                <label for="nitrogen">Nitrogen (N)</label>
+                <input type="number" step="any" class="form-control" id="nitrogen" name="nitrogen" required>
+            </div>
+            <div class="form-group">
+                <label for="phosphorus">Phosphorus (P)</label>
+                <input type="number" step="any" class="form-control" id="phosphorus" name="phosphorus" required>
+            </div>
+            <div class="form-group">
+                <label for="potassium">Potassium (K)</label>
+                <input type="number" step="any" class="form-control" id="potassium" name="potassium" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Predict</button>
+        </form>
+        {% if prediction %}
+        <h3 class="mt-3">Predicted Yield: {{ prediction }} Q/acre</h3>
+        {% elif error %}
+        <h3 class="mt-3 text-danger">{{ error }}</h3>
+        {% endif %}
+    </div>
+</body>
+</html>
